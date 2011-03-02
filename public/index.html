@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script> 
+<script src="https://github.com/marksoper/bigscreen/raw/DevMe-ImageSizing/bigscreen.js" type="text/javascript"></script> 
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+    var SHOW_DIV_ID = "mainShow";
+    var bigscreenDEBUG = true;
+    var flickr = new FlickrLoader("http://api.flickr.com/services/rest/",
+                                  {"format":"json",
+                                   "api_key":"ff4f40b52906a3fae2961e17739db037",
+                                   "method":"flickr.groups.pools.getPhotos",
+                                   "tags":"show",
+                                   "per_page":100,
+                                   "group_id":"41425956@N00"}
+                              );                                                
+    var show = new Show(flickr,SHOW_DIV_ID);
+    show.start();
+});
+</script> 
+
+<title>Bigscreen.js test page</title> 
+ 
+</head> 
+
+
+
+
+
+  <body>
+    <div id="mainShow">
+      <div class="screenDiv"> 
+      </div>
+    </div>
+    <div id="bigscreenDebug">
+    </div>
+  </body>
+
+
+
+</html>
