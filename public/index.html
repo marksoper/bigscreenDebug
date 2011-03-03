@@ -6,9 +6,9 @@
 <script src="https://github.com/marksoper/bigscreen/raw/DevMe-ImageSizing/bigscreen.js" type="text/javascript"></script> 
 
 <script type="text/javascript"> 
+
 $(document).ready(function() {
     var SHOW_DIV_ID = "mainShow";
-    var bigscreenDEBUG = true;
     var flickr = new FlickrLoader("http://api.flickr.com/services/rest/",
                                   {"format":"json",
                                    "api_key":"ff4f40b52906a3fae2961e17739db037",
@@ -17,7 +17,7 @@ $(document).ready(function() {
                                    "per_page":100,
                                    "group_id":"41425956@N00"}
                               );                                                
-    var show = new Show(flickr,SHOW_DIV_ID);
+    var show = new Show(flickr,SHOW_DIV_ID,true);  /* DEBUG */
     show.start();
 });
 </script> 
@@ -27,16 +27,84 @@ $(document).ready(function() {
 </head> 
 
 
+<style type="text/css">
+    .container {
+      width:1200px;
+    }
+    .tbrd {
+      border:1px solid #aaaaaa;
+    }
+    #app {
+      width:800px;
+    }
+    #bigscreenLog {
+      width:400px;
+    }
+    .imageColumn {
+      width:500px;
+    }
+    .debugColumn {
+      width:300px;
+    }
+    .leftColumn {
+      float:left;
+      clear:left;
+    }
+    .rightColumn {
+      float:right;
+      clear:right;
+    }
+    #mainShow {
+      overflow:hidden;
+    }
+    .hidden {
+      display:none;
+    }
+    #mainShow .screenImg {
+      height:200px;
+    }
+
+</style>
+
 
 
 
   <body>
-    <div id="mainShow">
-      <div class="screenDiv"> 
+
+<script type="text/javascript"> 
+  bigscreenDEBUG = true;
+</script>
+
+
+  <div id="container">
+
+    <div id="app" class="leftColumn tbrd" >
+
+      <div id="global">
       </div>
+
+      <div id="current">
+
+        <div id="mainShow" class="leftColumn imageColumn tbrd">
+          <div class="screenDiv"> 
+          </div>
+        </div>
+
+        <div id="mainDebug" class="rightColumn debugColumn tbrd">
+        </div>
+
+      </div>
+
+      <div id="history"> 
+      </div>
+
     </div>
-    <div id="bigscreenDebug">
+
+    <div id="bigscreenLog" class="rightColumn tbrd">
     </div>
+
+  </div>
+
   </body>
 
 
